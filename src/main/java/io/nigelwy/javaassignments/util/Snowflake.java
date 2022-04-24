@@ -7,7 +7,7 @@ package io.nigelwy.javaassignments.util;
  * This class should be plain java class, and not depends on any framework or other package.
  * <p>
  * 64 bits long type in java
- * |-- 1 bit not use --|-- 41 bits timestamp in milliseconds --|-- 12 bits worker id --|-- 10 bits sequence --|
+ * |-- 1 bit not use --|-- 56 bits timestamp in milliseconds --|-- 3 bits worker id --|-- 4 bits sequence --|
  * <p>
  * all timestamp values in this class are millisecond.
  */
@@ -20,14 +20,14 @@ public class Snowflake {
     private static final long EPOCH = 1650687842890L;
 
     /**
-     * worker-id take 12 bits
+     * worker-id take 3 bits
      */
-    private static final long WORKER_ID_BITS = 12L;
+    private static final long WORKER_ID_BITS = 3L;
 
     /**
-     * sequence take 10 bits
+     * sequence take 4 bits
      */
-    private static final long SEQUENCE_BITS = 10L;
+    private static final long SEQUENCE_BITS = 4L;
 
     /**
      * mask for some bit operation on sequence

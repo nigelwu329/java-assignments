@@ -1,5 +1,6 @@
 package io.nigelwy.javaassignments.service;
 
+import io.nigelwy.javaassignments.ShortUrlProperties;
 import io.nigelwy.javaassignments.util.Snowflake;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

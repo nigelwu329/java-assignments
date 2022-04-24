@@ -1,5 +1,6 @@
 package io.nigelwy.javaassignments.service;
 
+import io.nigelwy.javaassignments.ShortUrlProperties;
 import io.nigelwy.javaassignments.util.Snowflake;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,13 +28,15 @@ public class SnowflakeUrlGenerator implements UrlGenerator {
     private String convertToString(long number) {
         var seed = DIGITS.length;
         var maxLength = properties.getMaxLength();
-        var buf = new char[maxLength];
-        var charPos = maxLength;
+        var sb = new StringBuilder();
         while ((number / seed) > 0) {
-            buf[--charPos] = DIGITS[(int) (number % seed)];
+            sb.append(DIGITS[(int) (number % seed)]);
             number /= seed;
         }
-        buf[--charPos] = DIGITS[(int) (number % seed)];
-        return new String(buf, charPos, (maxLength - charPos));
+        sb.append(DIGITS[(int) (number % seed)]);
+        if (sb.length() > maxLength) {
+            throw new IllegalStateException();
+        }
+        return sb.toString();
     }
 }

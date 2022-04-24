@@ -1,14 +1,14 @@
 package io.nigelwy.javaassignments.config;
 
-import io.nigelwy.javaassignments.util.Snowflake;
+import io.swagger.v3.oas.models.OpenAPI;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ApplicationConfiguration {
+public class OpenApiConfig {
 
     @Bean
-    public Snowflake snowflake() {
-        return new Snowflake(1L);
+    public OpenAPI openAPI(){
+        return new OpenAPI();
     }
 }
