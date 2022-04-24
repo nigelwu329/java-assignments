@@ -9,8 +9,6 @@ testSets {
     isolationTest
 }
 
-apply from: "${rootProject.projectDir}/jacoco.gradle"
-
 group = 'io.nigelwy'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
@@ -41,3 +39,8 @@ dependencies {
 tasks.withType(Test) {
     useJUnitPlatform()
 }
+
+isolationTest.shouldRunAfter test
+check.dependsOn isolationTest
+
+apply from: "${rootProject.projectDir}/jacoco.gradle"

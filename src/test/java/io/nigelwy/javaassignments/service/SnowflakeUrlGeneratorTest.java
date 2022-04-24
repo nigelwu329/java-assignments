@@ -14,6 +14,7 @@ import static io.nigelwy.javaassignments.Constants.ORIGIN_URL;
 import static io.nigelwy.javaassignments.Constants.TIMEMILLIS;
 import static io.nigelwy.javaassignments.Constants.TIMEMILLIS_SHORT_URL;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -40,6 +41,15 @@ class SnowflakeUrlGeneratorTest {
 
             verify(snowflake).getId();
             assertThat(shortUrl).isEqualTo(TIMEMILLIS_SHORT_URL);
+        }
+
+        @Test
+        void should_throw_illegal_state_exception_given_id_too_big() {
+            when(properties.getMaxLength()).thenReturn(8);
+            when(snowflake.getId()).thenReturn(Long.MAX_VALUE);
+
+            assertThatThrownBy(() -> generator.generateShortUrl(ORIGIN_URL))
+                    .isInstanceOf(IllegalStateException.class);
         }
     }
 
