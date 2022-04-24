@@ -1,4 +1,4 @@
-package io.nigelwy.javaassignments.config;
+package io.nigelwy.javaassignments.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

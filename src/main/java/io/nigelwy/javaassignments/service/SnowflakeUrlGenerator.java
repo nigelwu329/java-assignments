@@ -1,6 +1,5 @@
 package io.nigelwy.javaassignments.service;
 
-import io.nigelwy.javaassignments.config.ShortUrlProperties;
 import io.nigelwy.javaassignments.util.Snowflake;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
