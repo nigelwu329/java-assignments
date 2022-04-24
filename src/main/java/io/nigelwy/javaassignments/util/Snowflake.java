@@ -14,10 +14,10 @@ package io.nigelwy.javaassignments.util;
 public class Snowflake {
 
     /**
-     * timestamp start from Sat Apr 23 2022 10:06:36 GMT+0800 (China Standard Time)
+     * timestamp start from Sat Apr 23 2022 12:24:02 GMT+0800 (China Standard Time)
      * DO NOT change this value !
      */
-    private static final long EPOCH = 1650679596796L;
+    private static final long EPOCH = 1650687842890L;
 
     /**
      * worker-id take 12 bits
@@ -43,17 +43,16 @@ public class Snowflake {
      * timestamp left-shift length
      */
     private static final long TIMESTAMP_LEFT_SHIFT_BITS = WORKER_ID_LEFT_SHIFT_BITS + WORKER_ID_BITS;
-
+    public static final Long MIN_VALUE = (1L << TIMESTAMP_LEFT_SHIFT_BITS)
+            | (1L << WORKER_ID_LEFT_SHIFT_BITS);
     /**
      * worker-id should not greater than this value
      */
     private static final long WORKER_ID_MAX_VALUE = (1L << WORKER_ID_BITS) - 1;
-
     /**
      * machine time may go backwards, if under 10 milliseconds we wait
      */
     private static final int MAX_TIMESTAMP_BACKWARDS_TO_WAIT = 10;
-
     private final long workerId;
 
     private long sequence = 0;
